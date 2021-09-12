@@ -35,7 +35,7 @@ module.exports = function (platform) {
          * 方式1：
          * 在注释 #if(n)def xxx 和 #endif 之间的内容会根据是否定义 xxx 决定是否保留
          */
-        const commentReg = /\/\*[\s\S]*?\*\/|\/\/[^\n]*|<!--[\s\S]*?-->/g // 提取所有注释
+        const commentReg = /\/\*[\s\S]*?\*\/|\/\/[^\n]*|<!--(?:(?!<!--[\s\S])*?)-->/g // 提取所有注释
         const copy = content // 拷贝一个副本用于搜索
         let match = commentReg.exec(copy)
         const stack = []
